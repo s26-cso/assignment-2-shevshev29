@@ -16,15 +16,21 @@ int main(){
         // we are loading the libs only during runtime , thus used dlfcn -> dlopen to load while prog is running
         void *handle=dlopen(lib_name, RTLD_LAZY);
         if(!handle){
-            
+            fprintf(stderr, "error: %s\n",dlerror());
+            continue; // to continue to next input w/o crashing
         }
         int (*function)(int,int)=dlsym(handle, s);
+        if(!function){
+            fprintf(stderr,"error: function %s\n no found", s);
+            dlclose(handle);
+            continue;  // to continue to next input w/o crashing
 
+        }
         //need to use the funct
         result=function(num1, num2);
         printf("%d\n", result);
 
-        dlclose(handle);
+        dlclose(handle); 
 
     }
     return 0;

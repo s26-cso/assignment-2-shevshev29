@@ -152,12 +152,17 @@ print_in_loop:
     #incrementing to next index in loop
     addi s3, s3, 1
     j print_in_loop
+
     
     
 
 
 # ending, need to load back
 printing_loop_done:
+    # print newline at end
+    la a0, newline
+    call printf
+
     ld s6, 0(sp)
     ld s5, 8(sp)
     ld s4, 16(sp)
@@ -170,7 +175,8 @@ printing_loop_done:
     li a0, 0           
     ret
     
+
+
 .section .rodata
 fmt: .asciz "%d "
-# print newline at end
 newline: .asciz "\n"

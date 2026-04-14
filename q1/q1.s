@@ -140,11 +140,11 @@ get_r:
     addi sp, sp, 16
     ret
 
-# getAtMost arguments: struct node *root, int val
+# getAtMost arguments:int val, struct node *root
 #returns the biggest val in  after "val" in bst
 getAtMost:
     li t2, -1  #setting the default val=-1
-    mv t1, a1  # t1= current node
+    mv t1, a1  # t1 = root (struct Node*)
     mv t0, a0  # t0= val
 
 loop:
