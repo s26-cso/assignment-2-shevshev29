@@ -146,14 +146,26 @@ print_in_loop:
 
 
     # printf("%d ", result[i]) 
+    /*
     la a0, fmt    # a0 is format string
     call printf   # calling the printf like fmt
+    */
+    bnez s3, use_rest
+    la a0, fmt_first
+    j do_print
 
+    
+
+use_rest:
+    la a0, fmt_rest
+
+
+do_print:
+    call printf
     #incrementing to next index in loop
     addi s3, s3, 1
     j print_in_loop
 
-    
     
 
 
@@ -178,5 +190,6 @@ printing_loop_done:
 
 
 .section .rodata
-fmt: .asciz "%d "
+fmt_first: .asciz "%d"
+fmt_rest: .asciz " %d"
 newline: .asciz "\n"
